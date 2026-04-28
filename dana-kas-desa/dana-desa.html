@@ -306,6 +306,49 @@
                 });
             });
         });
+        document.addEventListener("DOMContentLoaded", function() {
+    // 1. Ambil elemen yang dibutuhkan
+    const html = document.documentElement;
+    const toggleThemeBtn = document.getElementById('toggleTheme');
+    const toggleStyleBtn = document.getElementById('toggleStyle');
+
+    // 2. Fungsi untuk Update Icon Tombol
+    function updateIcons() {
+        // Update icon Dark Mode (Bulan untuk Dark, Matahari untuk Light)
+        toggleThemeBtn.innerHTML = html.classList.contains('dark') ? '🌙' : '☀️';
+        // Update icon Style (Kilau untuk Glass, Palet untuk Clean)
+        toggleStyleBtn.innerHTML = html.getAttribute('data-style') === 'glass' ? '✨' : '🎨';
+    }
+
+    // 3. Logika Klik Tombol Dark Mode
+    toggleThemeBtn.addEventListener('click', () => {
+        html.classList.toggle('dark');
+        
+        // Simpan preferensi user di browser agar tidak hilang saat refresh
+        if (html.classList.contains('dark')) {
+            localStorage.setItem('theme', 'dark');
+        } else {
+            localStorage.setItem('theme', 'light');
+        }
+        updateIcons();
+    });
+
+    // 4. Logika Klik Tombol Style (Glassmorphism)
+    toggleStyleBtn.addEventListener('click', () => {
+        const currentStyle = html.getAttribute('data-style');
+        const newStyle = currentStyle === 'glass' ? 'clean' : 'glass';
+        html.setAttribute('data-style', newStyle);
+        updateIcons();
+    });
+
+    // 5. Cek tema saat halaman pertama kali dibuka
+    if (localStorage.getItem('theme') === 'dark') {
+        html.classList.add('dark');
+    }
+    
+    // Jalankan icon pertama kali
+    updateIcons();
+});
     </script>
 </body>
 </html>
