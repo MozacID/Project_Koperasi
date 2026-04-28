@@ -69,8 +69,8 @@
                     <li><a href="../login-admin.html" class="hover:text-primary transition-colors border-l-2 border-slate-300 dark:border-slate-600 pl-6">Portal Admin</a></li>
                 </ul>
                 
-                <button id="toggleTheme" class="icon-btn" title="Ganti Tema">☀️</button>
-                <button id="toggleStyle" class="icon-btn" title="Ganti Gaya">✨</button>
+                <button id="toggleTheme" class="icon-btn" title="Ganti Tema"></button>
+                <button id="toggleStyle" class="icon-btn" title="Ganti Gaya"></button>
                 
                 <div class="flex items-center gap-2 border-l border-slate-300 dark:border-slate-700 pl-2 sm:pl-4 ml-1">
                     <a href="login-desa.html" class="btn-primary py-1.5 px-3 sm:py-2 sm:px-5 text-[11px] sm:text-sm shadow-md whitespace-nowrap">Login Warga</a>
@@ -306,92 +306,6 @@
                 });
             });
         });
-        <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Inisialisasi AOS (Animasi Scroll)
-        AOS.init({ once: false, mirror: true, duration: 800 });
-
-        const html = document.documentElement;
-        const toggleThemeBtn = document.getElementById('toggleTheme');
-        const toggleStyleBtn = document.getElementById('toggleStyle');
-        const liquidBg = document.getElementById('liquidBg');
-
-        // --- FUNGSI UPDATE UI ---
-        function updateUI() {
-            const isDark = html.classList.contains('dark');
-            const isGlass = html.getAttribute('data-style') === 'glass';
-
-            // Update Ikon
-            toggleThemeBtn.innerHTML = isDark ? '🌙' : '☀️';
-            toggleStyleBtn.innerHTML = isGlass ? '✨' : '🎨';
-
-            // Update Transparansi Background Liquid
-            if (isGlass) {
-                liquidBg.classList.remove('opacity-0');
-                liquidBg.classList.add('opacity-85');
-            } else {
-                liquidBg.classList.remove('opacity-85');
-                liquidBg.classList.add('opacity-0');
-            }
-        }
-
-        // --- EVENT: DARK MODE ---
-        toggleThemeBtn.addEventListener('click', () => {
-            html.classList.toggle('dark');
-            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
-            updateUI();
-        });
-
-        // --- EVENT: GLASS STYLE ---
-        toggleStyleBtn.addEventListener('click', () => {
-            const currentStyle = html.getAttribute('data-style');
-            const newStyle = currentStyle === 'glass' ? 'clean' : 'glass';
-            html.setAttribute('data-style', newStyle);
-            localStorage.setItem('webStyle', newStyle);
-            updateUI();
-        });
-
-        // --- CEK PREFERENSI SAAT RELOAD ---
-        // Default: Dark Mode & Glassmorphism
-        if (localStorage.getItem('theme') === 'light') {
-            html.classList.remove('dark');
-        } else {
-            html.classList.add('dark'); // Default 2026 biasanya dark
-        }
-
-        if (localStorage.getItem('webStyle') === 'clean') {
-            html.setAttribute('data-style', 'clean');
-        } else {
-            html.setAttribute('data-style', 'glass');
-        }
-
-        // Jalankan UI pertama kali
-        updateUI();
-
-        // --- LOGIKA TYPEWRITER (Yang tadi) ---
-        const textElement = document.getElementById("text-typewriter");
-        const textToType = "Dari Warga, Untuk Warga";
-        let index = 0;
-        let isDeleting = false;
-
-        function typeWriterLoop() {
-            let currentText = textToType.substring(0, index);
-            textElement.innerHTML = currentText;
-            let typeSpeed = isDeleting ? 50 : 100;
-            if (!isDeleting && index === textToType.length) { typeSpeed = 2500; isDeleting = true; }
-            else if (isDeleting && index === 0) { isDeleting = false; typeSpeed = 500; }
-            isDeleting ? index-- : index++;
-            setTimeout(typeWriterLoop, typeSpeed);
-        }
-        typeWriterLoop();
-    });
-
-    // Fungsi Scroll Carousel
-    function scrollCarousel(direction) {
-        const track = document.getElementById('carouselTrack');
-        track.scrollBy({ left: direction * 300, behavior: 'smooth' });
-    }
-</script>
     </script>
 </body>
 </html>
