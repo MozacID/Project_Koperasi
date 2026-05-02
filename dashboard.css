@@ -1,6 +1,4 @@
-/* ================================
-   1. CSS VARIABLES (TEMA HIJAU MENYALA)
-   ================================ */
+/* 1. CSS TEMA HIJAU */
 :root {
     --bg-color: #f8fafc;
     --text-color: #0f172a;
@@ -36,13 +34,11 @@
     --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
 }
 
-/* ================================
-   2. RESET & BACKGROUND LIQUID
-   ================================ */
+/*  2. RESET & BACKGROUND LIQUID*/
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
 body { background-color: var(--bg-color); color: var(--text-color); overflow-x: hidden; }
 
-/* Opacity ditingkatkan jadi 0.85, Blur dikurangi jadi 40px */
+/* Opacity 0.85, blur 40px */
 .liquid-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; filter: blur(40px); opacity: 0; transition: opacity 0.5s ease; }
 [data-style="glass"] .liquid-bg { opacity: 0.85; }
 
@@ -52,9 +48,7 @@ body { background-color: var(--bg-color); color: var(--text-color); overflow-x: 
 .blob-3 { width: 350px; height: 350px; background-color: var(--blob-3-color); top: 30%; left: 40%; animation-delay: -10s;}
 @keyframes liquidAnim { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(60px, 30px) scale(1.2); } }
 
-/* ================================
-   3. LAYOUT UTAMA (DASHBOARD & SIDEBAR)
-   ================================ */
+/*  3. (DASHBOARD & SIDEBAR) */
 .dashboard-container { display: flex; min-height: 100vh; }
 .panel-glass { background: var(--panel-bg); border: 1px solid var(--panel-border); box-shadow: var(--shadow); }
 [data-style="glass"] .panel-glass { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
@@ -75,9 +69,7 @@ body { background-color: var(--bg-color); color: var(--text-color); overflow-x: 
 .logout-btn { display: flex; align-items: center; gap: 10px; justify-content: center; text-decoration: none; color: var(--danger-color); padding: 12px 15px; border-radius: 10px; font-weight: bold; border: 1px solid transparent; transition: 0.3s; }
 .logout-btn:hover { background: rgba(239, 68, 68, 0.1); border-color: var(--danger-color); }
 
-/* ================================
-   4. HEADER & KARTU ANIMASI
-   ================================ */
+/* 4. HEADER & KARTU ANIMASI */
 .main-content { flex: 1; padding: 25px; display: flex; flex-direction: column; gap: 25px; z-index: 10; position: relative;}
 .top-header { position: relative; z-index: 150; display: flex; justify-content: space-between; align-items: center; padding: 20px 25px; border-radius: 15px; }
 .header-actions-right { display: flex; flex-direction: row; gap: 12px; align-items: center; }
@@ -98,9 +90,7 @@ body { background-color: var(--bg-color); color: var(--text-color); overflow-x: 
 .card p { font-size: 26px; font-weight: bold; color: var(--primary-color); text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); display: flex; justify-content: center; align-items: baseline; gap: 6px; white-space: nowrap; position: relative; z-index: 2;}
 .card p span { font-variant-numeric: tabular-nums; }
 
-/* ================================
-   5. NOTIFIKASI & TOAST POP-UP
-   ================================ */
+/* 5. NOTIFIKASI & TOAST POP-UP */
 .badge-dot { position: absolute; top: -5px; right: -5px; background-color: var(--danger-color); color: white; font-size: 10px; font-weight: bold; height: 18px; width: 18px; border-radius: 50%; display: flex; justify-content: center; align-items: center; border: 2px solid var(--panel-bg); }
 .notif-dropdown { position: absolute; top: 55px; right: 0; width: 320px; padding: 15px; border-radius: 12px; display: none; transform-origin: top center; animation: scaleIn 0.2s ease; background: var(--panel-bg); border: 1px solid var(--panel-border); box-shadow: 0 10px 40px rgba(0,0,0,0.4); z-index: 9999; }
 [data-theme="light"][data-style="glass"] .notif-dropdown { background: rgba(255, 255, 255, 0.95); }
@@ -124,9 +114,7 @@ body { background-color: var(--bg-color); color: var(--text-color); overflow-x: 
 .toast-text h4 { font-size: 14px; margin-bottom: 2px; }
 .toast-text p { font-size: 12px; opacity: 0.8; }
 
-/* ================================
-   6. TABEL, TOMBOL & PAGINATION
-   ================================ */
+/* 6. TABEL, TOMBOL & PAGINATION */
 .page-title { font-size: 20px; font-weight: bold; opacity: 0.9; margin-bottom: 15px; display: block;}
 .header-action { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;}
 
@@ -152,9 +140,7 @@ tbody tr:hover { background: rgba(16, 185, 129, 0.08); }
 .page-btn.active { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
 .page-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
-/* ================================
-   7. MODAL OVERLAY & CONTENT 
-   ================================ */
+/* 7. MODAL OVERLAY & CONTENT */
 .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 10000; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(5px); padding: 20px; box-sizing: border-box;}
 .modal-content { width: 100%; max-width: 420px; padding: 25px; border-radius: 20px; animation: slideIn 0.3s ease; position: relative; box-sizing: border-box; }
 @keyframes slideIn { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
@@ -165,9 +151,7 @@ tbody tr:hover { background: rgba(16, 185, 129, 0.08); }
 .detail-grid label { font-size: 12px; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.5px;}
 .detail-grid p { font-size: 16px; font-weight: 600; }
 
-/* ================================
-   8. PENGATURAN RESPONSIVE MOBILE (HP)
-   ================================ */
+/* 8. PENGATURAN RESPONSIVE MOBILE (HP) */
 @media (max-width: 768px) {
     .dashboard-container { flex-direction: column; }
     .sidebar { width: 100%; padding: 15px; border-right: none; border-bottom: 1px solid var(--panel-border); }
@@ -189,16 +173,14 @@ tbody tr:hover { background: rgba(16, 185, 129, 0.08); }
     .toast-popup.show { right: 5%; } 
 }
 
-/* TEMA GLASS UNTUK MODAL & FORM*/
-
-/* Blur Sempurna pada Overlay */
+/* GLASS UNTUK MODAL & FORM */
 .modal-overlay {
     background: rgba(0, 0, 0, 0.5) !important;
     backdrop-filter: blur(8px) !important;
     -webkit-backdrop-filter: blur(8px) !important;
 }
 
-/* Base Input Glass */
+/* Glass */
 .glass-input {
     width: 100%;
     padding: 12px 15px;
